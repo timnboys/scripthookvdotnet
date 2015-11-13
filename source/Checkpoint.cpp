@@ -25,8 +25,9 @@
 
 #include "Checkpoint.hpp"
 
-//#include "Script.hpp"
-#include "World.cpp"
+#include "Script.hpp"
+#include "Native.hpp"
+//#include "World.cpp"
 
 #pragma managed
 
@@ -42,16 +43,17 @@ namespace GTA {
 		{
 			Position = GTA::Math::Vector3(Position.X, Position.Y, Position.Z - 1);
 		}
-		Checkpoint::Handle = GTA::Native::Function::Call<Int32>(Native::Hash::CREATE_CHECKPOINT, 0, Position.X, Position.Y, Position.Z, radius, Red, green, blue, alpha, 0);
-		Checkpoint::check = check;
-		Checkpoint::chkpointpos = Position;
-		Checkpoint::Radius = radius;
-		Checkpoint::red1 = Red;
-		Checkpoint::green1 = green;
-		Checkpoint::blue1 = blue;
-		Checkpoint::alpha1 = alpha;
-		Checkpoint::AlignWithGround1 = AlignWithGround;
+		Handle = GTA::Native::Function::Call<int>(Native::Hash::CREATE_CHECKPOINT, 0, Position.X, Position.Y, Position.Z, radius, Red, green, blue, alpha, 0);
+		check = check;
+		GTA::Checkpoint::Position = Position;
+		Radius = radius;
+		red1 = Red;
+		green1 = green;
+		blue1 = blue;
+		alpha1 = alpha;
+		AlignWithGround1 = AlignWithGround;
 	}
+
 	void Checkpoint::DeleteCheckpoint(int Handle)
 	{
 		GTA::Native::Function::Call(Native::Hash::DELETE_CHECKPOINT, Checkpoint::Handle);
@@ -60,22 +62,25 @@ namespace GTA {
 	{
 		return Checkpoint::exists;
 	}
-	void Checkpoint::setPos(GTA::Math::Vector3 newposition)
+	/*void Checkpoint::setPos(GTA::Math::Vector3 newposition)
+	{
+		throw gcnew System::NotImplementedException();
+	}*/
+	/*void Checkpoint::setPos(GTA::Math::Vector3 newposition)
 	{
 		if (Checkpoint::exists)
 		{
-			Checkpoint::DrawCheckpoint(Checkpoint::check, Checkpoint::chkpointpos, Checkpoint::Radius, Checkpoint::red1, Checkpoint::green1, Checkpoint::blue1, Checkpoint::alpha1, Checkpoint::AlignWithGround1);
+			Checkpoint::Handle = Checkpoint::DrawCheckpoint(Checkpoint::check, Checkpoint::chkpointpos, Checkpoint::Radius, Checkpoint::red1, Checkpoint::green1, Checkpoint::blue1, Checkpoint::alpha1, Checkpoint::AlignWithGround1);
 		}
-	}
-	
+	}*/
 
 
 	//void Checkpoint::Visible::set(bool value) {
 	//	if (bVisible == value) return;
 	//	if (value) 
-	//		this->PerFrameDrawing += gcnew EventHandler(this, &Checkpoint::PerFrameDrawing);
+	//		/*this->PerFrameDrawing += gcnew EventHandler(this, &Checkpoint::PerFrameDrawing);*/
 	//	else
-	//		this->PerFrameDrawing -= gcnew EventHandler(this, &Checkpoint::PerFrameDrawing);
+	//		/*this->PerFrameDrawing -= gcnew EventHandler(this, &Checkpoint::PerFrameDrawing);*/
 	//	bVisible = value;
 	//}
 

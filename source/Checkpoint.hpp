@@ -19,12 +19,12 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
-//#include "stdafx.h"
+#include "stdafx.h"
 
-//#include "Checkpoint.hpp"
+//#include "Checkpoint.cpp"
 
 #include "Script.hpp"
-#include "World.hpp"
+//#include "World.hpp"
 #include "Native.hpp"
 #pragma once
 #pragma managed
@@ -38,32 +38,43 @@ namespace GTA {
 	/*CLASS_ATTRIBUTES*/
 	public ref class Checkpoint sealed {
 
-	private:
-		System::Drawing::Color pColor;
-		bool bVisible;
-		float pDiameter;
-		GTA::Math::Vector3 pPosition;
-		int Handle12 = 0;
-		bool exists;
+	//internal:
+	//
 		/*void PerFrameDrawing(Object^ sender, EventArgs^ e);*/
 
 	internal:
-		property bool exists
-		{
-			bool get() {
-				return Handle12 < > 0;
-			}
-		}
-		GTA::Math::Vector3 chkpointpos = GTA::Math::Vector3::Zero;
+		/*	property bool exists
+			{
+				bool get() {
+					return Handle12 < > 0;
+				}
+			}*/
+		static Single Radius = 0;
+		static int red1 = 0;
+		static int green1 = 0;
+		static int blue1 = 0;
+		static int alpha1 = 0;
+		static bool AlignWithGround1 = false;
+		static System::Drawing::Color pColor;
+		static bool bVisible;
+		static float pDiameter;
+		static GTA::Math::Vector3 pPosition;
+		static GTA::Math::Vector3 chkpointpos;
+		/*pPosition = GTA::Math::Vector3::Zero;*/
+		static int Handle12 = 0;
+		static bool exists;
+		/*static GTA::Math::Vector3 chkpointpos;*/
 
 	public:
 		property bool Visible {
 			bool get() {
 				return bVisible;
 			}
-			void set(bool value);
+			void set(bool value) {
+				bVisible = value;
+			}
 		}
-		enum CheckType
+	enum class CheckType
 		{
 			CylinderSingleArrow = 0,
 			CylinderDoubleArrow = 1,
@@ -112,11 +123,14 @@ namespace GTA {
 			pPosition = GTA::Math::Vector3();
 		}*/
 
-		void Disable() {
+		/*void Disable() {
 			Visible = false;
-		}
-		void Checkpoint::DrawCheckpoint(Checkpoint::CheckType check, GTA::Math::Vector3 Position, float radius, int Red, int green, int blue, int alpha, bool AlignWithGround);
-		void Checkpoint::DeleteCheckpoint(int Handle);
+		}*/
+		/*void Disable() {
+
+		}*/
+		static void Checkpoint::DrawCheckpoint(Checkpoint::CheckType check, GTA::Math::Vector3 Position, float radius, int Red, int green, int blue, int alpha, bool AlignWithGround);
+		static void Checkpoint::DeleteCheckpoint(int Handle);
 		property System::Drawing::Color Color {
 			System::Drawing::Color get() {
 				return pColor;
@@ -126,46 +140,41 @@ namespace GTA {
 			}
 		};
 
-		/*property GTA::Math::Vector3 Position {
+		static property GTA::Math::Vector3 Position {
 			GTA::Math::Vector3 get() {
 				return pPosition;
-			}*/
-		/*	void set(GTA::Math::Vector3 value) {
+			}
+			void set(GTA::Math::Vector3 value) {
 				pPosition = value;
-			}*/
-		/*}*/
 
-		property float Diameter {
-			float get() {
-				return pDiameter;
-			}
-			void set(float value) {
-				pDiameter = value;
 			}
 		}
-		property int Handle {
-			int get() {
-				return Handle12;
-			}
-			void set(int value) {
-				Handle12 = value;
-			}
-		}
-		property GTA::Math::Vector3 positionofcheckpoint {
-			GTA::Math::Vector3 get() {
-				return Checkpoint::chkpointpos;
-			}
-		}
-		bool DoesCheckpointExist(int Handle);
-		void setPos(GTA::Math::Vector3 newposition);
-	internal:
-		Checkpoint::CheckType check;
-		Single Radius = 0;
-		int red1 = 0;
-		int green1 = 0;
-		int blue1 = 0;
-		int alpha1 = 0;
-		bool AlignWithGround1 = false;
-};
 
+			static property float Diameter {
+				float get() {
+					return pDiameter;
+				}
+				void set(float value) {
+					pDiameter = value;
+				}
+			}
+			static property int Handle {
+				int get() {
+					return Handle12;
+				}
+				void set(int value) {
+					Handle12 = value;
+				}
+			}
+			static bool DoesCheckpointExist(int Handle);
+		/*	static void setPos(GTA::Math::Vector3 newposition);*/
+
+			property GTA::Math::Vector3 positionofcheckpoint {
+				GTA::Math::Vector3 get() {
+					return Checkpoint::chkpointpos;
+				}
+			}
+		internal:
+			static Checkpoint::CheckType check;
+	};
 }

@@ -10,6 +10,7 @@
 #include "Raycast.hpp"
 #include "Rope.hpp"
 #include "Vehicle.hpp"
+#include "Checkpoint.hpp"
 
 namespace GTA
 {
@@ -1055,8 +1056,9 @@ namespace GTA
 	{
 		Native::Function::Call(Native::Hash::_DRAW_SPOT_LIGHT_WITH_SHADOW, pos.X, pos.Y, pos.Z, dir.X, dir.Y, dir.Z, color.R, color.G, color.B, distance, brightness, roundness, radius, fadeout);
 	}
-	void World::DrawCheckpoint(GTA::Math::Vector3 Position, float radius, int Red, int green, int blue, int alpha)
+	void World::DrawCheckpoint(GTA::Checkpoint::CheckType check,GTA::Math::Vector3 Position, float radius, int Red, int green, int blue, int alpha, bool AlignWithGround)
 	{
-		GTA::Native::Function::Call(Native::Hash::CREATE_CHECKPOINT, 0, Position.X, Position.Y, Position.Z, radius, Red, green, blue, alpha, 0);
+		GTA::Checkpoint::DrawCheckpoint(check, Position, radius, Red, green, blue, alpha, AlignWithGround);
+		/*GTA::Native::Function::Call(Native::Hash::CREATE_CHECKPOINT, 0, Position.X, Position.Y, Position.Z, radius, Red, green, blue, alpha, 0);*/
 	}
 }
