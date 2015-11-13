@@ -25,6 +25,7 @@
 
 #include "Script.hpp"
 #include "World.hpp"
+#include "Native.hpp"
 #pragma once
 #pragma managed
 
@@ -42,11 +43,18 @@ namespace GTA {
 		bool bVisible;
 		float pDiameter;
 		GTA::Math::Vector3 pPosition;
-
-		void PerFrameDrawing(Object^ sender, EventArgs^ e);
+		int Handle12 = 0;
+		bool exists;
+		/*void PerFrameDrawing(Object^ sender, EventArgs^ e);*/
 
 	internal:
-
+		property bool exists
+		{
+			bool get() {
+				return Handle12 < > 0;
+			}
+		}
+		GTA::Math::Vector3 chkpointpos = GTA::Math::Vector3::Zero;
 
 	public:
 		property bool Visible {
@@ -55,14 +63,48 @@ namespace GTA {
 			}
 			void set(bool value);
 		}
-
-		Checkpoint(GTA::Math::Vector3 Position, System::Drawing::Color Color, float Diameter) {
+		enum CheckType
+		{
+			CylinderSingleArrow = 0,
+			CylinderDoubleArrow = 1,
+			CylinderTripleArrow = 2,
+			CylinderCycleArrow = 3,
+			CylinderChecker = 4,
+			CyclinderFadeSingleArrow = 5,
+			CyclinderFadeDoubleArrow = 6,
+			CylinderFadeTripleArrow = 7,
+			CyclinderFadeCycleArrow = 8,
+			CylinderSmallLowChecker = 9,
+			ArrowInCircle = 10,
+			DoubleArrowInCircle = 11,
+			TripleArrowInCircle = 12,
+			CycleArrowInCircle = 13,
+			CheckerInCircle = 14,
+			Arrow = 15,
+			DoubleArrow2 = 16,
+			DoubleArrow3 = 17,
+			CycleArrow2 = 18,
+			CheckerFinish = 19,
+			CylinderArrowLeft = 20,
+			CylinderDoubleLeftArrow = 21,
+			CylinderTripleLeftArrow = 22,
+			CylinderHightChecker = 24,
+			CylinderHighCycleArrow = 28,
+			PlaneLeftRollInCircle = 36,
+			PlaneRightRollInCircle = 36,
+			PlaneForwardInCircle = 36,
+			CircleBankLeft = 40,
+			CylinderZero = 42,
+			Cylinder = 45
+		};
+		/*Checkpoint(GTA::Math::Vector3 Position, System::Drawing::Color Color, float Diameter) {
 			bVisible = false;
 			pColor = Color;
 			pDiameter = Diameter;
 			pPosition = Position;
 			Visible = true;
-		}
+
+		}*/
 		/*Checkpoint() {
 			bVisible = false;
 			pColor = System::Drawing::Color::White;
@@ -73,7 +115,8 @@ namespace GTA {
 		void Disable() {
 			Visible = false;
 		}
-
+		void Checkpoint::DrawCheckpoint(Checkpoint::CheckType check, GTA::Math::Vector3 Position, float radius, int Red, int green, int blue, int alpha, bool AlignWithGround);
+		void Checkpoint::DeleteCheckpoint(int Handle);
 		property System::Drawing::Color Color {
 			System::Drawing::Color get() {
 				return pColor;
@@ -83,14 +126,14 @@ namespace GTA {
 			}
 		};
 
-		property GTA::Math::Vector3 Position {
+		/*property GTA::Math::Vector3 Position {
 			GTA::Math::Vector3 get() {
 				return pPosition;
-			}
-			void set(GTA::Math::Vector3 value) {
+			}*/
+		/*	void set(GTA::Math::Vector3 value) {
 				pPosition = value;
-			}
-		}
+			}*/
+		/*}*/
 
 		property float Diameter {
 			float get() {
@@ -100,7 +143,29 @@ namespace GTA {
 				pDiameter = value;
 			}
 		}
-
-	};
+		property int Handle {
+			int get() {
+				return Handle12;
+			}
+			void set(int value) {
+				Handle12 = value;
+			}
+		}
+		property GTA::Math::Vector3 positionofcheckpoint {
+			GTA::Math::Vector3 get() {
+				return Checkpoint::chkpointpos;
+			}
+		}
+		bool DoesCheckpointExist(int Handle);
+		void setPos(GTA::Math::Vector3 newposition);
+	internal:
+		Checkpoint::CheckType check;
+		Single Radius = 0;
+		int red1 = 0;
+		int green1 = 0;
+		int blue1 = 0;
+		int alpha1 = 0;
+		bool AlignWithGround1 = false;
+};
 
 }

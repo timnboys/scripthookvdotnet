@@ -609,40 +609,6 @@ namespace GTA
 			return Math::Vector3::Zero;
 		}
 	}
-	public enum CheckType
-	{
-		CylinderSingleArrow = 0,
-		CylinderDoubleArrow = 1,
-		CylinderTripleArrow = 2,
-		CylinderCycleArrow = 3,
-		CylinderChecker = 4,
-		CyclinderFadeSingleArrow = 5,
-		CyclinderFadeDoubleArrow = 6,
-		CylinderFadeTripleArrow = 7,
-		CyclinderFadeCycleArrow = 8,
-		CylinderSmallLowChecker = 9,
-		ArrowInCircle = 10,
-		DoubleArrowInCircle = 11,
-		TripleArrowInCircle = 12,
-		CycleArrowInCircle = 13,
-		CheckerInCircle = 14,
-		Arrow = 15,
-		DoubleArrow2 = 16,
-		DoubleArrow3 = 17,
-		CycleArrow2 = 18,
-		CheckerFinish = 19,
-		CylinderArrowLeft = 20,
-		CylinderDoubleLeftArrow = 21,
-		CylinderTripleLeftArrow = 22,
-		CylinderHightChecker = 24,
-		CylinderHighCycleArrow = 28,
-		PlaneLeftRollInCircle = 36,
-		PlaneRightRollInCircle = 36,
-		PlaneForwardInCircle = 36,
-		CircleBankLeft = 40,
-		CylinderZero = 42,
-		Cylinder = 45
-	};
 	System::String ^World::GetZoneName(Math::Vector2 position)
 	{
 		return GetZoneName(Math::Vector3(position.X, position.Y, 0));
