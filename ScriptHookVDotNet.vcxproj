@@ -11,7 +11,6 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>GTA</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -20,7 +19,6 @@
     <PlatformToolset>v120</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
-    <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
@@ -41,14 +39,11 @@
       <ErrorReporting>Queue</ErrorReporting>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalLibraryDirectories>sdk\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ScriptHookV.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ForceFileOutput>
-      </ForceFileOutput>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(TargetPath)" "$(TargetDir)$(TargetName).asi"</Command>
@@ -86,7 +81,6 @@
     <ClCompile Include="source\Tasks.cpp" />
     <ClCompile Include="source\UI.cpp" />
     <ClCompile Include="source\UIElement.cpp" />
-    <ClCompile Include="source\Menu.cpp" />
     <ClCompile Include="source\Vector2.cpp" />
     <ClCompile Include="source\Vector3.cpp" />
     <ClCompile Include="source\Vehicle.cpp" />
@@ -124,7 +118,6 @@
     <ClInclude Include="source\Tasks.hpp" />
     <ClInclude Include="source\UI.hpp" />
     <ClInclude Include="source\UIElement.hpp" />
-    <ClInclude Include="source\Menu.hpp" />
     <ClInclude Include="source\Vector2.hpp" />
     <ClInclude Include="source\Vector3.hpp" />
     <ClInclude Include="source\Vehicle.hpp" />
