@@ -148,4 +148,8 @@ namespace GTA
 	{
 		PerFrameScriptDrawing(this, EventArgs::Empty);
 	}
+	/*void Script::GraphicsEventArgs()
+	{
+		PerFrameScriptDrawing(this, EventArgs::Empty);
+	}*/
 }

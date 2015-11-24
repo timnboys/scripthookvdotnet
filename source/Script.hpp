@@ -48,6 +48,7 @@ namespace GTA
 		event System::EventHandler ^Tick;
 		event System::Windows::Forms::KeyEventHandler ^KeyUp;
 		event System::Windows::Forms::KeyEventHandler ^KeyDown;
+		event System::EventHandler ^GraphicsEventArgs;
 
 		property System::String ^Name
 		{
@@ -87,7 +88,7 @@ namespace GTA
 
 		void MainLoop();
 		void DoPerFrameScriptDrawing();
-
+		/*void GraphicsEventArgs();*/
 		int mInterval;
 		bool mRunning;
 		System::String ^mFilename;
