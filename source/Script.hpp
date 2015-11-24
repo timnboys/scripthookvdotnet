@@ -48,7 +48,8 @@ namespace GTA
 		event System::EventHandler ^Tick;
 		event System::Windows::Forms::KeyEventHandler ^KeyUp;
 		event System::Windows::Forms::KeyEventHandler ^KeyDown;
-		event System::EventHandler ^GraphicsEventArgs;
+		/*event System::EventHandler ^GraphicsEventArgs;*/
+		
 
 		property System::String ^Name
 		{
@@ -99,5 +100,6 @@ namespace GTA
 		System::Collections::Concurrent::ConcurrentQueue<System::Tuple<bool, System::Windows::Forms::KeyEventArgs ^> ^> ^mKeyboardEvents;
 		ScriptSettings ^mSettings;
 		event System::EventHandler ^PerFrameScriptDrawing;
+		/*event System::EventHandler ^PerFrameScriptDrawing;*/
 	};
 }

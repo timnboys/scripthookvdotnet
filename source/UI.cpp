@@ -6,12 +6,13 @@
 
 namespace GTA
 {
+	/*ref class GTA::Script;*/
 	using namespace System;
 	using namespace System::Drawing;
-
 	Notification::Notification(int handle) : _handle(handle)
 	{
 	}
+	/*event System::EventHandler ^GraphicsEventArgs;*/
 
 	void Notification::Hide()
 	{

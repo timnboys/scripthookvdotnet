@@ -22,6 +22,9 @@
     <Filter Include="scripting\NaturalMotion">
       <UniqueIdentifier>{7d70b8bd-e3f7-4ac8-975f-9757c66b19bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scripting\Audio">
+      <UniqueIdentifier>{cf52c681-3267-46c8-bedf-acc3abfe581f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Main.cpp">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="source\ScriptChild.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Audio.cpp">
+      <Filter>scripting\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="source\ScriptChild.hpp">
       <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Audio.hpp">
+      <Filter>scripting\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
